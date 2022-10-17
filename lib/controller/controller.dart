@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Controller extends ChangeNotifier{
-  int _hour=0;
-  int _minute=0;
-  final _alarm=[];
+import "../screens/create.dart";
 
-  int get hour=>_hour;
-  int get minute=>_minute;
-  get alarm=>_alarm;
+class Controller extends ChangeNotifier{
+  TimeOfDay time=TimeOfDay.now();
+  var _hour=[];
+  var _minute=[];
+
+  get hour=>_hour;
+  get minute=>_minute;
 
   incNumber(){
-    _hour++;
-    _minute++;
-    _alarm.add(_hour);
+    _hour.add(time.hour);
+    _minute.add(time.minute);
     notifyListeners();
   }
 }

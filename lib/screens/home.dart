@@ -14,13 +14,13 @@ class HomeScreen extends StatelessWidget{
       appBar:AppBar(
         backgroundColor:Colors.white,
         elevation:0,
-        title:Text("AlarME", style:TextStyle(
-          color:Colors.black
+        title:const Text("Your alarms", style:TextStyle(
+          color:Colors.black,
          )
         ),
         actions:[
           IconButton(
-            icon:Icon(Icons.settings, color:Colors.black),
+            icon:const Icon(Icons.settings, color:Colors.black),
             onPressed:(){
               Navigator.push(
                 context,
@@ -39,29 +39,51 @@ class HomeScreen extends StatelessWidget{
           Center(
           child:Column(
             children:[
-              Container(
-                margin:EdgeInsets.all(15),
-                child: Row(
-                  children: [
-                    Text("Your Alarms", style:TextStyle(
-                      color:Colors.black,
-                      fontSize:30
-                    )),
-                  ],
-                ),
-              ),
               Consumer<Controller> (
               builder: (context, value, child) {
-              return Column(
-                  children:[
-                  for(var i in value.alarm)
-                  Container(
-                    margin:EdgeInsets.all(10),
-                    color:Colors.black,
-                    width:screenWidth/2,
-                    height:screenHeight/8
-                  )
-                  ]
+              return SizedBox(
+                height:screenHeight,
+                child: ListView.builder(
+                  itemCount:value.hour.length,
+                  itemBuilder:(context, index) {
+                    return Column(
+                      children:[
+                      Container(
+                        margin:const EdgeInsets.all(10),
+                        decoration:BoxDecoration(
+                          borderRadius:BorderRadius.circular(20),
+                          color:Colors.black
+                        ),
+                        width:screenWidth/1.05,
+                        height:screenHeight/8,
+                        child:Row(
+                          children:[
+                            Column(
+                              children:[
+                                const Text("Alarm name", style:TextStyle(
+                                  color:Colors.white
+                                )),
+                                Row(
+                                  children:[
+                                Text("${value.hour[index]}:", style:const TextStyle(
+                                  color:Colors.white
+                                )),
+                                Text("${value.minute[index]}", style:const TextStyle(
+                                  color:Colors.white
+                                )),
+                                  ]
+                                )
+                              ]
+                            ),
+                            const Icon(Icons.alarm, color:Colors.white)
+                          ]
+                        )
+                      )
+                      ]
+                  );
+                  }
+                  
+                ),
               );
                }
               )
@@ -71,11 +93,18 @@ class HomeScreen extends StatelessWidget{
        ]
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor:Color.fromARGB(255, 104, 104, 104),
+        backgroundColor:const Color.fromARGB(255, 104, 104, 104),
         onPressed:(){
-          Provider.of<Controller>(context, listen:false).incNumber();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:(context) {
+                return CreateScreen();
+              },
+            )
+          );
         },
-        child:Icon(Icons.add, color:Colors.white)
+        child:const Icon(Icons.add, color:Colors.white)
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
     );
