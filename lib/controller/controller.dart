@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 
 class Controller extends ChangeNotifier {
-  TimeOfDay time = TimeOfDay.now();
-  String name = "Alarm";
 
-  final _hour = [];
-  final _minute = [];
-  final _alarmName = [];
+  var removeIndex;
 
-  get hour => _hour;
-  get minute => _minute;
-  get alarmName => _alarmName;
+  Controller({
+     this.removeIndex
+  });
+
+  String todoName = "Todo";
+  bool checkedTodo=false;
+
+  var _todos = [];
+
+  get todos => _todos;
 
   incNumber() {
-    _hour.add(time.hour);
-    _minute.add(time.minute);
-    _alarmName.add(name);
+    todos.add(todoName);
+    notifyListeners();
+  }
+
+  checkTodo(){
+    checkedTodo=!checkedTodo;
+    notifyListeners();
+  }
+
+  removeTodo(index){
+    todos.removeAt(removeIndex);
     notifyListeners();
   }
 }

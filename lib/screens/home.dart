@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
-          title: const Text("Your alarms",
+          title: const Text("Your To Do list",
               style: TextStyle(
                 color: Colors.black,
               )),
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               return SizedBox(
                 height: screenHeight,
                 child: ListView.builder(
-                    itemCount: value.hour.length,
+                    itemCount: value.todos.length,
                     itemBuilder: (context, index) {
                       return Column(children: [
                         Container(
@@ -35,28 +35,33 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20), color: Colors.black),
                             width: screenWidth / 1.05,
                             height: screenHeight / 8,
-                            child: Row(children: [
+                            child: Stack(children: [
                               Container(
-                                margin: const EdgeInsets.all(20),
+                                margin: const EdgeInsets.all(35),
                                 child: Column(children: [
-                                  Text(value.alarmName[index],
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      )),
-                                  Row(children: [
-                                    Text("${value.hour[index]}:",
-                                        style: const TextStyle(color: Colors.white, fontSize: 27)),
-                                    Text("${value.minute[index]}",
-                                        style: const TextStyle(color: Colors.white, fontSize: 27)),
-                                  ])
+                                  Text("${value.todos[index]}",
+                                      style: const TextStyle(color: Colors.white, fontSize: 20)),
                                 ]),
                               ),
                               Container(
-                                  margin: EdgeInsets.only(left: screenWidth / 1.9),
-                                  child: IconButton(
-                                      icon: const Icon(Icons.notifications_active,
-                                          color: Colors.white),
-                                      onPressed: () {}))
+                                margin:EdgeInsets.only(left:screenWidth/1.55, top:22),
+                                  child: Row(
+                                children: [
+                                  IconButton(
+                                      icon: Icon(Provider.of<Controller>(context, listen: false).checkedTodo ? Icons.check_box : Icons.check_box_outline_blank,
+                                          color: Colors.white, size: 25),
+                                      onPressed: () {
+                                        Provider.of<Controller>(context, listen: false).checkTodo();
+                                      }),
+                                  IconButton(
+                                      icon: const Icon(Icons.delete, color: Colors.white, size: 25),
+                                      onPressed: () {
+                                        Provider.of<Controller>(context, listen: false).removeTodo(
+                                          value.removeIndex=value.todos.length>0?value.todos.indexOf([index])+1:value.todos.indexOf([index])
+                                        );
+                                      }),
+                                ],
+                              ))
                             ]))
                       ]);
                     }),
