@@ -37,21 +37,20 @@ class HomeScreen extends StatelessWidget {
                             height: screenHeight / 8,
                             child: Stack(children: [
                               Container(
-                                margin: const EdgeInsets.all(35),
+                                margin: const EdgeInsets.all(30),
                                 child: Column(children: [
                                   Text("${value.todos[index]}",
                                       style: const TextStyle(color: Colors.white, fontSize: 20)),
                                 ]),
                               ),
                               Container(
-                                  margin: EdgeInsets.only(left: screenWidth / 1.3, top: 25),
+                                  margin: EdgeInsets.only(left: screenWidth / 1.3, top: 20),
                                   child: IconButton(
                                       icon: const Icon(Icons.check, color: Colors.white, size: 30),
                                       onPressed: () {
                                         Provider.of<Controller>(context, listen: false).removeTodo(
-                                            value.removeIndex = value.todos.length > 0
-                                                ? value.todos.indexOf([index]) + 1
-                                                : value.todos.indexOf([index]));
+                                            value.removeIndex = value.todos[index]
+                                        );
                                       }))
                             ]))
                       ]);

@@ -18,7 +18,7 @@ class Controller extends ChangeNotifier {
   }
 
   removeTodo(index) {
-    todos.removeAt(removeIndex);
+    todos.remove(removeIndex);
     notifyListeners();
   }
 }
