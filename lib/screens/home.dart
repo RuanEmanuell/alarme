@@ -44,24 +44,15 @@ class HomeScreen extends StatelessWidget {
                                 ]),
                               ),
                               Container(
-                                margin:EdgeInsets.only(left:screenWidth/1.55, top:22),
-                                  child: Row(
-                                children: [
-                                  IconButton(
-                                      icon: Icon(Provider.of<Controller>(context, listen: false).checkedTodo ? Icons.check_box : Icons.check_box_outline_blank,
-                                          color: Colors.white, size: 25),
-                                      onPressed: () {
-                                        Provider.of<Controller>(context, listen: false).checkTodo();
-                                      }),
-                                  IconButton(
-                                      icon: const Icon(Icons.delete, color: Colors.white, size: 25),
+                                  margin: EdgeInsets.only(left: screenWidth / 1.3, top: 25),
+                                  child: IconButton(
+                                      icon: const Icon(Icons.check, color: Colors.white, size: 30),
                                       onPressed: () {
                                         Provider.of<Controller>(context, listen: false).removeTodo(
-                                          value.removeIndex=value.todos.length>0?value.todos.indexOf([index])+1:value.todos.indexOf([index])
-                                        );
-                                      }),
-                                ],
-                              ))
+                                            value.removeIndex = value.todos.length > 0
+                                                ? value.todos.indexOf([index]) + 1
+                                                : value.todos.indexOf([index]));
+                                      }))
                             ]))
                       ]);
                     }),

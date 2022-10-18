@@ -29,7 +29,7 @@ class _CreateScreen extends State<CreateScreen> {
             decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(20)),
             child: ListView(children: [
               Container(
-                  margin: EdgeInsets.only(top: 50),
+                  margin: const EdgeInsets.only(top: 50),
                   child: Column(children: [
                     const Text("To Do name:", style: TextStyle(color: Colors.white, fontSize: 40)),
                     Container(

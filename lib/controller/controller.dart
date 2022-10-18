@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Controller extends ChangeNotifier {
-
   var removeIndex;
 
-  Controller({
-     this.removeIndex
-  });
+  Controller({this.removeIndex});
 
   String todoName = "Todo";
-  bool checkedTodo=false;
+  bool checkedTodo = false;
 
-  var _todos = [];
+  final _todos = [];
 
   get todos => _todos;
 
@@ -20,12 +17,7 @@ class Controller extends ChangeNotifier {
     notifyListeners();
   }
 
-  checkTodo(){
-    checkedTodo=!checkedTodo;
-    notifyListeners();
-  }
-
-  removeTodo(index){
+  removeTodo(index) {
     todos.removeAt(removeIndex);
     notifyListeners();
   }
