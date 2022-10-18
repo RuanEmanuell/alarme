@@ -1,16 +1,14 @@
-# alarme
+# Veja a versão em Português <a href="README-ptbr.md">aqui</a>
 
-A new Flutter project.
+## Todo
 
-## Getting Started
+A Simple Todo List made in Flutter for training the usage of Provider instead of SetState(), which I was much more used to.
 
-This project is a starting point for a Flutter application.
+### How to Run
 
-A few resources to get you started if this is your first Flutter project:
+You will need <a href="https://docs.flutter.dev/get-started/install">Flutter</a>, after booting up on your emulator or device and <a href="https://docs.flutter.dev/get-started/codelab">starting a new Flutter project</a>, you will transfer the files of this repository folder of your Flutter project. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Here are some images of the project running:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![todo](https://user-images.githubusercontent.com/113607857/196442999-f1ddb10f-a138-4635-91e1-744a60a85a59.gif)
+
